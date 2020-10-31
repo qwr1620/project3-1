@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>국립중앙박물관 전시소개</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" type="text/css" rel="stylesheet"> 
+    <link href="css/sub_style.css" type="text/css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="jquery-3.1.1.min.js"></script>
+    
+    
+     <script>
+        $(document).ready(function() {
+            mobile_menu();
+        });
+
+        function mobile_menu() {
+            /* 변수 선언 */
+            var $menu = null;
+            var $left_gnb = null; // 영역 전체
+            var $depth1_wrap = null;
+            var $depth1 = null;
+            var $depth1_btn = null;
+
+            /* 시작 함수 */
+            function start() {
+                init();
+                init_event();
+            }
+            /* 변수 초기화 함수 */
+            function init() {
+                $menu = $('.menu2');
+                $left_gnb = $('.left_gnbWrap'); // 영역 전체
+                $depth1_wrap = $('.left_gnb>li');
+                $depth1 = $depth1_wrap.children('ul');
+                $depth1_btn = $depth1_wrap.children('a');
+            }
+            /* 이벤트 함수 */
+            function init_event() {
+
+                /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+                $menu.click(function(event) {
+                    event.preventDefault();
+                    $left_gnb.addClass('on');
+                });
+
+                /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+                $('.close').click(function(event) {
+                    event.preventDefault();
+
+                    $left_gnb.removeClass('on');
+
+                    // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                    setTimeout(function() {
+                        $depth1_btn.removeClass('on');
+                        $depth1.slideUp();
+                    }, 300)
+                });
+
+                /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+                $depth1_btn.click(function(event) {
+                    event.preventDefault();
+                    var $this = $(this);
+                    var $this_ul = $this.siblings('ul');
+
+                    var check = $this.hasClass('on');
+                    if (check) {
+                        $this.removeClass('on');
+                        $this_ul.stop(true, true).slideUp();
+                    } else {
+                        $depth1_btn.removeClass('on');
+                        $depth1.stop().slideUp();
+                        $this.addClass('on');
+                        $this_ul.stop(true, true).slideDown();
+                    }
+                });
+
+                /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+                $(window).resize(function() {
+                    $left_gnb.removeClass('on');
+                });
+            }
+
+            start(); // 시작 호출
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div id=wrap>
+        <!--헤더-->
+         <header id="header">
+            <div class="inner">
+                <div class="logo">
+                   <a href="index.html">
+                    <img src="images/logologo.png" alt="로고"></a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="information.html">관람정보</a>
+                        <ul class="submenu">
+                                <li><a href="information.html">전시관람</a></li>
+                                <li><a href="information.html">전시해설</a></li>
+                                <li><a href="information.html">예약하기</a></li>
+                                <li><a href="information.html">오시는길</a></li>
+                        </ul>
+                        </li>
+                        
+                        <li><a href="exhibition.html">전시</a>
+                        <ul class="submenu">
+                                <li><a href="exhibition.html">상설전시</a></li>
+                                <li><a href="exhibition.html">특별전시</a></li>
+                                <li><a href="exhibition.html">온라인전시</a></li>
+                                <li><a href="exhibition.html">전시도록</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="#">교육·행사</a>
+                        <ul class="submenu">
+                                <li><a href="#">교육신청</a></li>
+                                <li><a href="#">교육자료</a></li>
+                                <li><a href="#">교육소식</a></li>
+                                <li><a href="#">이러닝</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">소장품</a>
+                        <ul class="submenu">
+                                <li><a href="#">소장품 검색</a></li>
+                                <li><a href="#">수어 동영상</a></li>
+                                <li><a href="#">소장품 열람</a></li>
+                                <li><a href="#">문화재 기증</a></li>
+                            </ul></li>
+                        <li><a href="#">학술·출판</a>
+                        <ul class="submenu">
+                                <li><a href="#">정기 간행물</a></li>
+                                <li><a href="#">고고학</a></li>
+                                <li><a href="#">역사학</a></li>
+                                <li><a href="#">미술사학</a></li>
+                            </ul></li>
+                        <li><a href="#">소식·참여</a>
+                        <ul class="submenu">
+                                <li><a href="#">소식</a></li>
+                                <li><a href="#">자원봉사 안내</a></li>
+                                <li><a href="#">전자민원</a></li>
+                            </ul></li>
+                        <li><a href="#">박물관소개</a>
+                        <ul class="submenu">
+                                <li><a href="#">인사말</a></li>
+                                <li><a href="#">조직 및 업무</a></li>
+                                <li><a href="#">시설소개</a></li>
+
+
+                            </ul></li>
+                        <!--:after으로 clear:both -->
+                        
+                    </ul>
+
+
+
+                </nav>
+
+                <!--모바일 메뉴부분-->
+                <div class="menu2">
+                    <a href="#"></a>
+                </div>
+                <nav class="left_gnbWrap">
+                    <a href="#" class="close">
+                        <i class="close_i">
+                        <img src="images/noun_X_2500110.png" alt="x">
+                        </i>
+                    </a>
+                    <ul class="left_gnb">
+                        <li>
+                            <a href="#">관람정보</a>
+                            <ul>
+                                <li><a href="#">전시관람</a></li>
+                                <li><a href="#">전시해설</a></li>
+                                <li><a href="#">예약하기</a></li>
+                                <li><a href="#">오시는길</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="exhibition.html">전시</a>
+                            <ul>
+                                <li><a href="#">상설전시</a></li>
+                                <li><a href="exhibition.html">특별전시</a></li>
+                                <li><a href="#">온라인전시</a></li>
+                                <li><a href="#">전시도록</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">교육·행사</a>
+                            <ul>
+                                <li><a href="#">교육신청</a></li>
+                                <li><a href="#">교육자료</a></li>
+                                <li><a href="#">교육소식</a></li>
+                                <li><a href="#">이러닝</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">소장품</a>
+                            <ul>
+                                <li><a href="#">소장품 검색</a></li>
+                                <li><a href="#">수어 동영상</a></li>
+                                <li><a href="#">소장품 열람</a></li>
+                                <li><a href="#">문화재 기증</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#">학술·출판</a>
+                            <ul>
+                                <li><a href="#">정기 간행물</a></li>
+                                <li><a href="#">고고학</a></li>
+                                <li><a href="#">역사학</a></li>
+                                <li><a href="#">미술사학</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#">소식·참여</a>
+                            <ul>
+                                <li><a href="#">소식</a></li>
+                                <li><a href="#">자원봉사 안내</a></li>
+                                <li><a href="#">전자민원</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#">박물관소개</a>
+                            <ul>
+                                <li><a href="#">인사말</a></li>
+                                <li><a href="#">조직 및 업무</a></li>
+                                <li><a href="#">시설소개</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="info_btns">
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li>
+                            <select>
+                                <option>&nbsp;&nbsp;KOR</option>
+                                <option>&nbsp;&nbsp;ENG</option>
+                                <option>&nbsp;&nbsp;日本語</option>
+                                <option>&nbsp;&nbsp;中文</option>
+                            </select>
+                        </li>
+                        <!--:after으로 clear:both -->
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+        </header>
+        
+        <!--메뉴바-->
+        <section id="menuimg">
+           <div class="inner">
+                <div class="menu_h">
+                    <h2>황금문명 엘도라도:신비의 보물을 찾아서</h2>
+                    <p>ELDORADO-THE SPIRITS,GOLD AND THE SHAMAN </p>
+                </div>
+                <div class="menu_b">
+                    <ul>
+                        <li><a href="index.html">
+                        <i><img src="images/home.png" alt="홈"></i></a></li>
+
+                        <li>
+                            <select>
+                                <option>&nbsp;&nbsp;특별전시</option>
+                                <option>&nbsp;&nbsp;상설전시</option>
+                                <option>&nbsp;&nbsp;온라인전시</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select>
+                                <option>&nbsp;&nbsp;황금문명 엘도라도</option>
+                                <option>&nbsp;&nbsp;이집트 보물전</option>
+                                <option>&nbsp;&nbsp;빛의 과학</option>
+                                <option>&nbsp;&nbsp;프랑스 근현대 복식</option>
+                                <option>&nbsp;&nbsp;알바사 왕실 컬렉션</option>
+                            </select>
+                        </li>
+                        <!--:after으로 clear:both -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!--컨텐츠-->
+        <section id="contents">
+          <div class="titlebox">
+               <h2 class="title_eng">Special<br>Exhibition</h2>
+               <h2 class="title_kor">특별 전시</h2>
+               </div>
+           <div class="inner">
+           
+           <!--페이지 제목-->
+           
+               
+           <!--전시회 제목-->
+               
+               
+           <div class="extitlebox">
+                   <div class="special_ex">특별전</div>
+                   <h3 class="ex_title">황금문명 엘도라도:신비의 보물을 찾아서</h3>
+                   <p> ELDORADO - THE SPIRITS, GOLD AND THE SHAMAN</p>
+               </div>
+           
+           
+          
+           
+           <!--비디오-->
+            <div class="video">
+                <video controls src="eldorado.mp4" type='video/mp4;codec="avc.1.42e01e,mp4a.40.2"'
+                 width="100%"; height="500px;">
+                </video>
+            </div>
+            
+            <!--전시설명-->
+            <div class="about">
+             <div class="flower">
+                 <img src="images/flowers.png" alt="꽃">
+             </div>
+             
+             <div class="list">
+             <div class="list_l">
+                 <ul>
+                     <li>전시기간</li>
+                     <li>전시장소</li>
+                     <li>주최</li>
+                     <li>주관</li>
+                     <li>관람시간</li>
+                     <!--:after으로 clear:both -->
+                 </ul>
+             </div>
+             
+             <div class="list_r">
+                 <ul>
+                     <li>2020.11.28(토) ~ 2021.01.30(토)</li>
+                     <li>기획전시실</li>
+                     <li>국립중앙박물관</li>
+                     <li>KBS한국방송</li>
+                     <li>10:00 ~ 19:00(입장마감 18:00)</li>
+                     <!--:after으로 clear:both -->
+                 </ul>
+            </div>
+            
+            </div>
+             <div class="btn">
+             <a href="#">예약하기</a></div>
+            </div>
+            </div>
+            
+            <!--전시설명2-->
+            <div class="list_box">
+                <div class="box_h">
+                    <h3>황금문명 엘도라도-신비의 보물을 찾아서</h3>
+                    <p class="series_txt">
+                     이 전시는 2009년 특별전 '태양의 아들, 잉카',2012년 특별전 '마야2012'에 이어 6년 만에 개최하는 중남미 문명 특별전으로, 황금박물관이 자랑하는 세계적인 황금유물 등 322점을 국내에 처음으로 소개합니다.
+                    </p>
+                    
+                    <ul class="showimgs">
+                        <li><img src="images/contentsimg01.jpg" alt="전시이미지1"></li>
+                        <li><img src="images/contentsimg02.jpg" alt="전시이미지2"></li>
+                        <li><img src="images/contentsimg03.jpg" alt="전시이미지3"></li>
+                        <li><img src="images/contentsimg04.jpg" alt="전시이미지4"></li>
+                        <!--:after으로 clear:both -->
+                    </ul>
+                    
+                    <p class="series_txt">
+                    엘도라도는 황금을 찾아 헤매고 황금을 위해 싸우고, 황금을 위해 죽은 많은 사람들의 심장을 뛰게 한 말로 탐험과 모험을 상상하게 만듭니다. 아마존 강을 지나 안데스 산맥을 넘어 잃어버린 황금문명을 찾아가는 생생한 탐험의 길을 떠올릴 수 있도록 4부로 나누어 전시를 구성했습니다.
+                    </p>
+                    
+            
+            
+               <div class="series">
+               
+
+                <span>[SERIES]</span>
+                <!--1부-->
+                <p class="s_title">제 1부 '부활한 엘도라도'</p>
+                <p class="s_body">미디어 파사드 기법을 이용한 3면 영상으로 관객들을 신비의 땅, 엘도라도로 인도합니다.</p>
+                
+                <!--2부-->
+                <p class="s_title">제 2부 '자연과의 동화'</p>
+                <p class="s_body">동물장식과 생활용품을 전시하여 자신들을 자연의 일부로 인식하고 자연과 더불어 살고자했던<br> 콜롬비아 원주민의 삶을 소개합니다.</p>
+                
+                <!--3부-->
+                <p class="s_title">제 3부 '샤먼으로의 변신'</p>
+                <p class="s_body">의식을 치를때 사용했던 화려하고 다양한 황금 장신구들을 전시하여 원주민들을<br>꿈과 이상으로 인도했던 샤먼에 대해 소개합니다.</p>
+                
+                <!--4부-->
+                <p class="s_title">제 4부 '신과의 만남'</p>
+                <p class="s_body">샤먼은 영혼의 세계를 자유로이 오가고 족장과 원주민을 신에게 인도하는 중개자였습니다. 이러한 과정에<br>함께한 다양한 황금 장신구와 문신 도구를 소개합니다.</p>
+            
+            
+            <!--공지사항-->
+            <div class="guide">
+                <div class="title">
+                <i><img src="images/notice.png" alt="전시안내"></i>
+                <span>전시안내</span>
+                </div>
+                <p class="guide_txt">큐레이터와의 대화: 수 19:00 - 19:30 │ 도슨트 전시 해설: 평일 10:30, 11:30, 15:00, 주말 11:30</p>
+                
+                <p class="contact">문의:1688-0361</p>
+            </div>
+            </div>
+            </div>
+            
+            </div>
+            <!--관련 전시 리스트-->
+            <div class="relation_list">
+                <div class="relation_h">
+                    <p>관련 전시 리스트</p>
+                    <div class="line"></div>
+                </div>
+                <div class="relation_b">
+                    <ul>
+                       <!--1-->
+                        <li><a href="#">
+                            <img src="images/egyptian.jpg" alt="이집트 보물전">
+                            <p class="kind">특별전</p>
+                            <p class="name">이집트 보물전:이집트 미라 한국에 오다</p>
+                            <p class="engname">Egyptian Treasures From The Brooklyn Museum</p>
+                            <div class="inner_line"></div>
+                            <div class="hoverbox">
+                                <p>+</p>
+                            </div>
+                            </a></li>
+                        <!--2-->    
+                        <li><a href="#">
+                            <img src="images/light.jpg" alt="빛의 과학전">
+                            <p class="kind">특별전</p>
+                            <p class="name">빛의 과학, 문화재의 비밀을 밝히다</p>
+                            <p class="engname">The Science of Light Reveaing the Secrets of Cultural Properties</p>
+                            <div class="inner_line"></div>
+                            <div class="hoverbox">
+                                <p>+</p>
+                            </div>
+                            </a></li>
+                        <!--3-->    
+                        <li><a href="#">
+                            <img src="images/unbutton.jpg" alt="프랑스복식전">
+                            <p class="kind">상설전시</p>
+                            <p class="name">프랑스 근현대 복식, 단추로 풀다</p>
+                            <p class="engname">Unbuttoning the French Fashion from the 18th to the 20th century</p>
+                            <div class="inner_line"></div>
+                            <div class="hoverbox">
+                                <p>+</p>
+                            </div>
+                            </a></li>
+                        <!--4-->    
+                        <li><a href="#">
+                            <img src="images/frenchArt.jpg" alt="프랑스 미술전">
+                            <p class="kind">특별전</p>
+                            <p class="name">예르미타시박물관展, 겨울 궁전에서 온 프랑스 미술</p>
+                            <p class="engname">From Classicism to Impressionism:Three Centuries of French Art</p>
+                            <div class="hoverbox2">
+                                <p>+</p>
+                            </div>
+                            </a></li>
+                        <!--5-->    
+                        <li><a href="#">
+                            <img src="images/lslamic.jpg" alt="이슬람의 보물">
+                            <p class="kind">특별전</p>
+                            <p class="name">이슬람의 보물-알사바 왕실 컬렉션</p>
+                            <p class="engname">Art from the Islamic Civilization</p>
+                            <div class="hoverbox2">
+                                <p>+</p>
+                            </div>
+                            </a></li>
+                        <!--6-->    
+                        <li><a href="#">
+                            <img src="images/king.jpg" alt="왕이 사랑한 보물전">
+                            <p class="kind">특별전</p>
+                            <p class="name">王이 사랑한 보물:독일 드레스덴 박물관연합 명품전</p>
+                            <p class="engname">The Dream of a King:Masterpiece from the Dresden State Art Collections</p>
+                            <div class="hoverbox2">
+                                <p>+</p>
+                            </div>
+                            </a></li>
+                            <!--:after으로 clear:both -->
+                    </ul>
+                </div>
+            </div>
+            
+        </section>
+        
+      <!--하단-->
+      <footer id="footer">
+       <div class="top_footer">
+           <div class="inner">
+              <div class="footer_btns">
+               <ul>
+                   <li><a href="#">전자민원</a></li>
+                   <li><a href="#">개인정보처리방침</a></li>
+                   <li><a href="#">공공데이터개방</a></li>
+                   <li><a href="#">저작권 정책</a></li>
+                   <li><a href="#">클린신고 센터</a></li>
+                   <!--:after으로 clear:both -->
+               </ul>
+               </div>
+               
+               <div class="sitebox">
+                  <ul>
+                      <li>문의 070-855-6666</li>
+                      <li><select>
+                       <option>&nbsp;&nbsp;관련사이트 바로가기</option>
+                       <option>&nbsp;&nbsp;국립경주박물관</option>
+                       <option>&nbsp;&nbsp;국립광주박물관</option>
+                       <option>&nbsp;&nbsp;국립전주박물관</option>
+                       <option>&nbsp;&nbsp;국립대구박물관</option>
+                       <option>&nbsp;&nbsp;국립부여박물관</option>
+                       <option>&nbsp;&nbsp;국립공주박물관</option>
+                   </select></li>
+                   <!--:after으로 clear:both -->
+                  </ul>
+                   
+               </div>
+           </div>
+       </div>
+       <div class="bottom_footer">
+           <div class="inner">
+               <div class="logo_f">
+                   <img src="images/logologo.png" alt="하단로고">
+               </div>
+               <div class="address">
+                   04383 서울시 용산구 서빙고로 137(용산동 6가 168-6) │ 대표전화 02.2077.9000
+                   <br>
+                   ⓒNational Museum of Korea
+               </div>
+           </div>
+       </div>
+        
+    </footer>
+        
+    </div>
+</body>
+</html>

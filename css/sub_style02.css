@@ -1,0 +1,139 @@
+/*서브네비*/
+
+.left_gnbWrap{display: none;}
+
+/*메뉴바*/
+#menuimg{height: 420px;}
+#menuimg > .inner{width:100%; height: 433px;
+                  position: relative;
+                  background-image: url(../images/sub2bg.jpg);
+                  background-repeat: no-repeat;
+                  background-position: center center;
+                  background-size: cover;}
+
+.menu_h{text-align: center; padding-top: 10%;}
+.menu_h h2{font-size: 3.7rem; color: #fff;}
+.menu_h p{font-size: 2.3rem; color: #fff;}
+
+.menu_b{position:absolute; top: 86%; width:100%; height: 60px; 
+        line-height: 60px; border-top: 1px solid #ccc;}
+.menu_b > ul{position: absolute; left: 22%;}
+.menu_b > ul > li{float:left; font-size: 1.9rem;}
+.menu_b > ul:after{display: inline-block; content: ""; clear: both;}
+.menu_b > ul > li:nth-child(1){width: 60px; text-align: center;
+                              border-left: 1px solid #ccc;
+                              border-right: 1px solid #ccc;}
+.menu_b > ul > li:nth-child(2){width: 188px;
+                               border-right: 1px solid #ccc;}
+.menu_b > ul > li > select{width: 100%; height: 50px; border: none;
+                           background-color: rgba(0,0,0,0);
+                           color:#aaabab;}
+.menu_b > ul > li:nth-child(3){width: 280px;
+                               border-right: 1px solid #ccc;}
+
+
+/*페이지 제목*/
+.titlebox{margin-top: 2%; width: 100%;
+          height: 150px; position: relative;}
+.title_eng{font-size: 10rem; line-height: 1; color:#f2f5ed;
+           position: absolute; top:0; left: 0;}
+.title_kor{font-size: 5rem; font-weight: bold; letter-spacing: -5px;
+           color: #333333; position: absolute; top: 50%; left: 13%;}
+
+/*전시관람 안내*/
+
+.guide{margin-top: 80px;
+       width: 100%;;
+      }
+
+.inner{width: 1182px; margin: 0 auto;}
+
+.guidewrap{width: 100%; margin: 0 auto;}
+
+.guidewrap > li{float: left; text-align: center;
+                 width:23.33%; height: 400px;
+                 border: 1px solid #eaeaea;
+                 margin-right: 2%}
+.guidewrap > li:last-child{margin-right: 0;}
+
+.guidewrap > li >h4{margin:50px 0 15px 0; letter-spacing: -1px;
+                     font-size: 2.2rem; color: #333;}
+.guidewrap > li > i > img{width: 35%;}
+
+
+/*관람시간*/
+.time{margin-top: 20px;
+      font-size: 1.8rem; color:#333; font-weight: bold}
+.time_txt{margin-top: 10px;
+          font-size: 1.2rem; color: #787878;}
+
+/*정기휴관일*/
+.schedule{margin-top: 20px;
+          font-size: 1.5rem; color:#787878;}
+.schedule_txt{margin-top: 8px; color: #333;
+              font-size: 1.8rem; font-weight: bold}
+/*요금*/
+.fee{margin-top: 20px;
+     font-size: 1.8rem; color: #333; font-weight: bold}
+
+.fee_txt{margin-top: 5px;
+         font-size: 1.2rem; color: #787878;}
+
+/*단체관람*/
+.group{margin-top: 20px; font-size: 1.8rem; font-weight: bold;
+       color: #333;}
+.group_txt{margin-top: 10px; font-size: 1.2rem; color: #787878;}
+
+/*주의*/
+
+.caution{margin-top: 50px; width: 100%; height: 50px;
+         line-height: 20px;}
+.caution > li{height: 25px; line-height: 25px;}
+
+.caution > li > i > img{width: 4.5%}
+
+
+/*관람시 유의사항*/
+
+.note{padding-top: 10%;
+      width: 100%; margin: 0 auto;}
+
+.note > h3{font-size: 3rem; color: #333;}
+.note > p {font-size: 1.5rem; color: #787878;
+           padding-top: 5px}
+
+.note_box {margin-top: 25px;
+           height: 350px;
+           border: 1px solid #eaeaea;
+           }
+.notewrap{ width: 95%; height: 95%; margin: 0 auto;}
+.box{width: 33.3%; height: 100px;
+     float: left; margin: 6% 0 0 0}
+.note_icon{float: left; text-align: center;}
+.note_txt{float: right; width: 60%; margin-top: 5%;
+           font-size: 1.4rem; color: #787878;}
+.note_icon > img{width: 50%;}
+
+/*리플렛*/
+.leaflet{width: 100%; height: 500px;}
+.leaflet > .inner > h4{font-size: 3rem; color: #333;
+                       padding-top: 15px}
+.download{width: 100%; padding-top: 3%;}
+.download li{width: 47.33%; height: 100px; 
+             border: 1px solid #ccc;
+             line-height: 100px;
+             margin-right: 5%;
+             margin-bottom:2%;
+             text-align: center;}
+.download li:nth-child(2), .download li:nth-child(4){margin-right:0;}
+.download a{font-size: 1.5rem;
+            color: #787878;}
+.download i{float: left; padding:20px 0 0 30px;}
+.txtbox2{width: 50%; height: 100px; 
+         margin: 0 auto;}
+.download span{float: right; padding-right: 20px;}
+.download img{width: 80%}
+
+.leaflet > h4{font-size: 3rem; }
+.download > ul > li{float: left;}
+
